@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * Damascus App
+ * https://github.com/justchad/deapp
  * @flow
  */
 
@@ -11,6 +11,8 @@ import {
   Text,
   View
 } from 'react-native';
+
+var s = require('./global/style');
 
 class Damascus extends Component {
   render() {

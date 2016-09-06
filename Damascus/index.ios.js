@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * Damascus App
+ * https://github.com/justchad/deapp
  * @flow
  */
 
@@ -8,24 +8,62 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Navigator,
+  AsyncStorage,
   Text,
   View
 } from 'react-native';
 
+var s = require('./_global/style');
+
+let UID_object = {
+ name: 'User',
+ password: '000000',
+ coupon: false,
+ code: 1,
+};
+
+AsyncStorage.setItem('UIDobj', JSON.stringify(UID_object), () => {
+  AsyncStorage.getItem('UIDobj', (err, result) => {
+    console.log(result);
+  });
+});
+
+//Page imports
+import Main from './Main';
+import Login from './Login';
+import SignUp from './SignUp';
+import ForgotPassword from './ForgotPassword';
+
+
 class Damascus extends Component {
+  
+  //Render method
+  renderScene(route, navigator){
+    //Use if not switch here
+    if (route.name == 'Main') {
+        return <Main navigator={navigator} />
+    }
+    if (route.name == 'Login') {
+				return <Login navigator={navigator} />
+		}
+		if (route.name == 'SignUp') {
+				return <SignUp navigator={navigator} />
+		}
+		if (route.name == 'ForgotPassword') {
+				return <ForgotPassword navigator={navigator} />
+		}
+  }
+  
   render() {
+   
     return (
+      
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Navigator
+          initialRoute={{name: 'Login'}}
+          renderScene={this.renderScene.bind(this)}
+        />
       </View>
     );
   }
@@ -34,20 +72,9 @@ class Damascus extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  
 });
 
 AppRegistry.registerComponent('Damascus', () => Damascus);
