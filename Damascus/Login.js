@@ -18,7 +18,6 @@ import {
 } from 'react-native';
 import PasswordInput from './PasswordInput';
 import Styles from './Styles';
-import com.brentvatne.react.ReactVideoPackage;
 var {height, width} = Dimensions.get('window');
 
 class Login extends Component {
@@ -42,39 +41,53 @@ class Login extends Component {
           width: width - 50,
           marginTop: 25,
           borderRadius: 3,
-          backgroundColor: this.hasCredentials() ? Styles.Colors.CuriousBlue : '#aaa'
+          backgroundColor: this.hasCredentials() ? '#cc5e55' : '#aaa'
         };
       },
       login: function() {
         console.log(this.emailText, this.passwordText)
+        
+        let UID_object = {
+          name: 'Damascus',
+          password: 'Cutekittens99',
+          coupon: false,
+          code: 1,
+        };
+         
+        AsyncStorage.setItem('UIDobj', JSON.stringify(UID_object), () => {
+           AsyncStorage.getItem('UIDobj', (err, result) => {
+            var userString = JSON.parse(result);
+            console.log(userString.name);
+             
+            if (userString.name == this.emailText && userString.password == this.passwordText) {
+              self.navigate('Main');
+            }
+            else{
+              self.navigate('Login');
+            }
+             
+           });
+        });
+        
         // todo authenticate this.emailText and this.passwordText
-        self.navigate('Main');
+        
+        
+        
+        
+        
       }
     };
   }
 
   navigate(routeName) {
     this.props.navigator.push({
-      name: routeName
+      name: routeName,
     });
   }
 
   render() {
     return (
     <View style={styles.wrapper}>
-    <Video source={{uri: "./_assets/video-blacksmith"}} // Can be a URL or a local file. 
-       rate={1.0}                   // 0 is paused, 1 is normal. 
-       volume={1.0}                 // 0 is muted, 1 is normal. 
-       muted={false}                // Mutes the audio entirely. 
-       paused={false}               // Pauses playback entirely. 
-       resizeMode="cover"           // Fill the whole screen at aspect ratio. 
-       repeat={true}                // Repeat forever. 
-       onLoadStart={this.loadStart} // Callback when video starts to load 
-       onLoad={this.setDuration}    // Callback when video loads 
-       onProgress={this.setTime}    // Callback every ~250ms with currentTime 
-       onEnd={this.onEnd}           // Callback when playback finishes 
-       onError={this.videoError}    // Callback when video cannot be loaded 
-       style={styles.backgroundVideo} />
        
       <Image source={require('./_assets/loginBg@2x.png')}
         style={styles.backgroundImg}>
@@ -83,6 +96,7 @@ class Login extends Component {
             style={styles.logoImg} />
           <View style={styles.textInputWrapper}>
             <TextInput placeholder='Email'
+              placeholderTextColor = '#858585'
               keyboardType='email-address'
               style={styles.textInput}
               value={this.state.emailText}
@@ -159,14 +173,15 @@ const styles = StyleSheet.create({
   },
   textInputWrapper: {
     flexDirection: 'row',
-    borderBottomColor: Styles.Colors.LightGray,
+    borderBottomColor: '#858585',
     borderBottomWidth: 1,
     marginTop: 20,
   },
   textInput: {
     alignSelf: 'center',
     height: 25,
-    width: width - 50
+    width: width - 50,
+    color: '#CCC'
   },
   buttonWrapper: {
     flexDirection: 'row',

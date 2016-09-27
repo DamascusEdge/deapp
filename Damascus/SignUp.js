@@ -44,7 +44,7 @@ class SignUp extends Component {
           width: width - 50,
           marginTop: 25,
           borderRadius: 3,
-          backgroundColor: this.hasRequiredFields() ? Styles.Colors.CuriousBlue : '#aaa'
+          backgroundColor: this.hasRequiredFields() ? '#cc5e55' : '#aaa'
         };
       },
       signUp: function() {
@@ -72,6 +72,7 @@ class SignUp extends Component {
             </View>
             <View style={styles.textInputWrapper}>
               <TextInput placeholder='First Name'
+                placeholderTextColor = '#858585'
                 keyboardType='default'
                 style={styles.textInput}
                 value={this.state.firstNameText}
@@ -79,6 +80,7 @@ class SignUp extends Component {
             </View>
             <View style={styles.textInputWrapper}>
               <TextInput placeholder='Last Name'
+                placeholderTextColor = '#858585'
                 keyboardType='default'
                 style={styles.textInput}
                 value={this.state.lastNameText}
@@ -86,6 +88,7 @@ class SignUp extends Component {
             </View>
             <View style={styles.textInputWrapper}>
               <TextInput placeholder='Email'
+                placeholderTextColor = '#858585'
                 keyboardType='email-address'
                 style={styles.textInput}
                 value={this.state.emailText}
@@ -128,19 +131,20 @@ const styles = StyleSheet.create({
     marginTop: 100
   },
   headerText: {
-    color: Styles.Colors.DaintreeLight,
+    color: '#cc5e55',
     fontSize: Styles.Typography.h3,
     fontWeight: 'bold'
   },
   textInputWrapper: {
     flexDirection: 'row',
-    borderBottomColor: Styles.Colors.LightGray,
+    borderBottomColor: '#858585',
     borderBottomWidth: 1,
     marginTop: 20,
   },
   textInput: {
     height: 25,
-    width: width - 50
+    width: width - 50,
+    color: '#CCC',
   },
   buttonWrapper: {
     flexDirection: 'row',

@@ -16,19 +16,6 @@ import {
 
 var s = require('./_global/style');
 
-let UID_object = {
- name: 'User',
- password: '000000',
- coupon: false,
- code: 1,
-};
-
-AsyncStorage.setItem('UIDobj', JSON.stringify(UID_object), () => {
-  AsyncStorage.getItem('UIDobj', (err, result) => {
-    console.log(result);
-  });
-});
-
 //Page imports
 import Main from './Main';
 import Login from './Login';

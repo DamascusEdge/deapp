@@ -32,6 +32,7 @@ class PasswordInput extends Component {
       <View style={styles.passwordWrapper}>
         <View style={styles.passwordTextInputWrapper}>
           <TextInput placeholder='Password'
+            placeholderTextColor = '#858585'
             keyboardType='default'
             password={!this.state.showPassword}
             style={styles.passwordTextInput}
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   },
   passwordTextInputWrapper: {
     flexDirection: 'column',
-    borderBottomColor: Styles.Colors.LightGray,
+    borderBottomColor: '#858585',
     borderBottomWidth: 1,
     marginTop: 5,
     alignSelf: 'flex-start',
@@ -65,7 +66,8 @@ const styles = StyleSheet.create({
   passwordTextInput: {
     marginTop: 10,
     height: 25,
-    width: width - 100
+    width: width - 100,
+    color: '#CCC'
   },
   passwordVisibilityWrapper: {
     flexDirection: 'column',

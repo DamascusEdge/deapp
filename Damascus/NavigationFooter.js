@@ -45,12 +45,13 @@ const styles = StyleSheet.create({
   footerButton: {
     height: 60,
     borderTopColor: Styles.Colors.LightGray,
-    borderTopWidth: 2
+    borderTopWidth: 2,
   },
   footerText: {
     fontWeight: 'bold',
     marginTop: 20,
     textAlign: 'center',
+    color: '#858585'
   }
 });
 

@@ -39,7 +39,7 @@ class ForgotPassword extends Component {
           width: width - 50,
           marginTop: 25,
           borderRadius: 3,
-          backgroundColor: this.hasEmail() ? Styles.Colors.CuriousBlue : '#aaa'
+          backgroundColor: this.hasEmail() ? '#cc5e55' : '#aaa'
         };
       },
       resetPassword: function() {
@@ -72,6 +72,7 @@ class ForgotPassword extends Component {
             </View>
             <View style={styles.textInputWrapper}>
               <TextInput placeholder='Email'
+                placeholderTextColor = '#858585'
                 keyboardType='email-address'
                 style={styles.textInput}
                 value={this.state.emailText}
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 100
   },
   headerText: {
-    color: Styles.Colors.DaintreeLight,
+    color: '#cc5e55',
     fontSize: Styles.Typography.h3,
     fontWeight: 'bold'
   },
@@ -114,19 +115,20 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   instructionsText: {
-    color: Styles.Colors.GrannySmithLight,
+    color: '#cc5e55',
     width: width - 50
   },
   textInputWrapper: {
     flexDirection: 'row',
-    borderBottomColor: Styles.Colors.LightGray,
+    borderBottomColor: '#858585',
     borderBottomWidth: 1,
     marginTop: 20
   },
   textInput: {
     alignSelf: 'center',
     height: 25,
-    width: width - 50
+    width: width - 50,
+    color: '#CCC'
   },
   buttonWrapper: {
     flexDirection: 'row',
